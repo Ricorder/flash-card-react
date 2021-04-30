@@ -1,6 +1,7 @@
 const User = require('../models/user')
 
 async function signUp (req, res) {
+  console.log(req.body);
   const { email, password } = req.body
   if (email && password) {
     const check = await User.findOne({email})
