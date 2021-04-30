@@ -1,14 +1,18 @@
 const User = require('../models/user')
 
 async function signUp (req, res) {
+  console.log(req.body);
   const { email, password } = req.body
   if (email && password) {
     const check = await User.findOne({email})
+    console.log(check);
     if (!check) {
+      console.log('YA TOJE TUT');
       const newUser = await User.create({
         email, password
       })
-      return res.sendStatus(200)
+      console.log(newUser, 'newUser');
+      return res.status(200).json(newUser._id)
     } else {
       return res.sendStatus(418)
     }
