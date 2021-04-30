@@ -13,11 +13,14 @@ const Header = () => {
     history.push('/signin')
   }
 
+  
+
   return (
     <>
       <Navbar bg="dark" variant="dark">
         <Nav className="mr-auto">
           <Nav.Link href="/profile">Профиль</Nav.Link>
+          
           <Nav.Link onClick={goToSignIn}>Войти</Nav.Link>
           <Nav.Link onClick={goToSignUp}>Регистрация</Nav.Link>
         </Nav>

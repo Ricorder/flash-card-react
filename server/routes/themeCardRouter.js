@@ -5,7 +5,7 @@ const {
   addCard,
   finalCard,
   resultRender,
-} = require('../controllers/todoController');
+} = require('../controllers/themeCardController');
 
 mainRouter.route('/')
   .get(allThemeRender)
@@ -14,7 +14,7 @@ mainRouter.route('/')
 mainRouter.route('/')
   .get(allThemeRender)
 
-mainRouter.route('/category/:name/:index')
+mainRouter.route('/themes/:name/:index')
   .post(finalCard)
 
 mainRouter.route('/results/:name')
