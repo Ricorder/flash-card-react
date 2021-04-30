@@ -8,5 +8,5 @@ const cardsSchema = new Schema({
   theme: String,
 });
 
-const cards = model('Cards', cardsSchema)
-module.exports = cards
+const Cards = model('Cards', cardsSchema)
+module.exports = Cards

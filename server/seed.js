@@ -1,7 +1,7 @@
 const Theme = require('./models/themes')
 const Cards = require('./models/cards')
 const { connect, disconnect } = require('mongoose');
-connect('mongodb://localhost:27017/FlashCards', { useNewUrlParser: true, useUnifiedTopology: true });
+connect('mongodb://localhost:27017/FlashCardsReact', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const themes = [
   {
@@ -163,8 +163,6 @@ async function main() {
 
   const allThemesPopulate = await Theme.find()
   const allCardsPopulate = await Cards.find()
-  console.log(allThemesPopulate);
-  console.log(allCardsPopulate);
 }
 
 main().then(() => disconnect())

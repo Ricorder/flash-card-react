@@ -1,54 +1,24 @@
-const express = require("express");
-const Cards = require("../models/cards");
-const Theme = require("../models/themes");
-const router = express.Router();
+const mainRouter = require('express').Router();
 
-let currQuestionArr = [];
-let currQuestionIndex = 0;
-let statRightQuestion = 0;
-let result = 0
+const {
+  allThemeRender,
+  addCard,
+  finalCard,
+  resultRender,
+} = require('../controllers/todoController');
 
-router.get("/", async (req, res) => {
-  const theme = await Theme.find();
-  result = 0;
-  res.render('main', theme);
-});
+mainRouter.route('/')
+  .get(allThemeRender)
+  .post(addCard)
 
-router.post("/", async (req, res) => {
-  const {theme} = req.body;
-  const rightTheme = await Cards.find({ theme: theme });
-  console.log(rightTheme);
-  const index = 0;
-  res.json({ question: rightTheme[index], index: index + 1 });
-});
+mainRouter.route('/')
+  .get(allThemeRender)
 
-router.post("/category/:name/:index", async (req, res) => {
-  const theme = req.params.name
-  const index = Number(req.params.index);
-  const userAnswer = req.body.input;
-  
-  if (index === 4) {
-    res.json({theme})
-  }else {
-    const rightTheme = await Cards.find({ theme });
-    if (index === 3) {
-      const lastCheck = userAnswer === rightTheme[index - 1].answer;
-      lastCheck ? result += 1 : null
-      res.json({question: { question: 'И ответ на последний вопрос', theme }, index: index + 1, validation: lastCheck ? "Угадали" : "Не угадали", })
-    }else {
-      if (userAnswer === rightTheme[index - 1].answer) {
-        result += 1;
-        res.json({ question: rightTheme[index], index: index + 1, validation: "Угадали",})
-      }else {
-        res.json({question: rightTheme[index], index: index + 1, validation: "Не угадали",})
-      }
-    }
-  }
-})
+mainRouter.route('/category/:name/:index')
+  .post(finalCard)
 
-router.get('/results/:name', (req, res) => {
-  const theme = req.params.name;
-  res.json({ name: theme, score: result })
-})
+mainRouter.route('/results/:name')
+  .get(resultRender) 
 
-module.exports = router
+module.exports = mainRouter
+
