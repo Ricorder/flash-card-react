@@ -9,13 +9,12 @@ let result = 0
 async function allThemeRender (req, res) {
   const theme = await Theme.find();
   result = 0;
-  res.render('main', theme);
+  res.json(theme);
 };
 
 async function addCard (req, res) {
   const {theme} = req.body;
   const rightTheme = await Cards.find({ theme: theme });
-  console.log(rightTheme);
   const index = 0;
   res.json({ question: rightTheme[index], index: index + 1 });
 };
