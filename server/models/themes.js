@@ -9,5 +9,5 @@ const themeSchema = new Schema({
   }]
 });
 
-const theme = model('Theme', themeSchema)
-module.exports = theme
+const Theme = model('Theme', themeSchema)
+module.exports = Theme

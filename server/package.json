@@ -19,10 +19,11 @@
   },
   "homepage": "https://github.com/Ricorder/web-flashcards-challenge#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "hbs": "^4.1.1",
-    "mongoose": "^5.12.3",
+    "mongoose": "^5.12.7",
     "morgan": "^1.10.0"
   }
 }

@@ -2,13 +2,13 @@ const { connect } = require('mongoose')
 const { dbConnectionURL, options } = require('./config')
 const app = require("../app");
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-  console.log('Server started ', PORT)
+  console.log('Сервер газанул ', PORT)
   connect(dbConnectionURL, options, (err) => {
     if (err) return console.log(err)
-    console.log('DB started')
+    console.log('База рванула')
   })
 })
 
